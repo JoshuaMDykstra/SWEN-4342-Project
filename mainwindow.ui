@@ -341,7 +341,7 @@
      <rect>
       <x>80</x>
       <y>240</y>
-      <width>160</width>
+      <width>185</width>
       <height>80</height>
      </rect>
     </property>
@@ -372,20 +372,14 @@
        </item>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="operationSubmitButton">
+       <property name="text">
+        <string>Calculate</string>
+       </property>
+      </widget>
+     </item>
     </layout>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>330</y>
-      <width>80</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

@@ -77,7 +77,7 @@ public:
     QHBoxLayout *operationLayout;
     QLabel *operationLabel;
     QComboBox *operationSelectorComboBox;
-    QPushButton *pushButton;
+    QPushButton *operationSubmitButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -306,7 +306,7 @@ public:
 
         horizontalLayoutWidget = new QWidget(centralwidget);
         horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
-        horizontalLayoutWidget->setGeometry(QRect(80, 240, 160, 80));
+        horizontalLayoutWidget->setGeometry(QRect(80, 240, 185, 80));
         operationLayout = new QHBoxLayout(horizontalLayoutWidget);
         operationLayout->setObjectName("operationLayout");
         operationLayout->setContentsMargins(0, 0, 0, 0);
@@ -323,9 +323,11 @@ public:
 
         operationLayout->addWidget(operationSelectorComboBox);
 
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(180, 330, 80, 24));
+        operationSubmitButton = new QPushButton(horizontalLayoutWidget);
+        operationSubmitButton->setObjectName("operationSubmitButton");
+
+        operationLayout->addWidget(operationSubmitButton);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -390,7 +392,7 @@ public:
         operationSelectorComboBox->setItemText(1, QCoreApplication::translate("MainWindow", "-", nullptr));
         operationSelectorComboBox->setItemText(2, QCoreApplication::translate("MainWindow", "*", nullptr));
 
-        pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        operationSubmitButton->setText(QCoreApplication::translate("MainWindow", "Calculate", nullptr));
     } // retranslateUi
 
 };

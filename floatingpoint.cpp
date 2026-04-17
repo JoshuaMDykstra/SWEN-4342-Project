@@ -1,7 +1,6 @@
 #include "floatingpoint.h"
 
 
-
 floatingPoint::floatingPoint() {
     //Constructor
 }
@@ -22,12 +21,12 @@ bool floatingPoint::setBinaryValue(QString input) {
 bool floatingPoint::setDecimalValue(QString input) {
     //take in input text in decimal format and convert to and store as a float, return false if conversion fails
 
-    int state = 0;
-
-    for (int i = 0; i < input.size(); i++) {
-        //if (isdigit(input[i])) {
-
-        //}
+    //TEMP
+    try {
+        value = std::stof(input.toStdString());
+        return true;
+    } catch (...) {
+        return false;
     }
 
     return false;
@@ -54,8 +53,8 @@ QString floatingPoint::getBinaryText() {
 QString floatingPoint::getDecimalText() {
     //returns stored float converted to decimal text
 
-    //TODO
-    return "TODO";
+    //TEMP
+    return QString::fromStdString(std::to_string(value));
 }
 QString floatingPoint::getHexText() {
     //returns stored float converted to hex text

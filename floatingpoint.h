@@ -1,7 +1,7 @@
 #ifndef FLOATINGPOINT_H
 #define FLOATINGPOINT_H
 
-
+#include <string>
 #include "qstring.h"
 
 class floatingPoint

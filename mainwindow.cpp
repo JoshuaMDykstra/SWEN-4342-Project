@@ -63,3 +63,80 @@ void MainWindow::on_input1SubmitButton_clicked() //run when submit button for in
     ui->input1HexDisplay->setText(input1.getHexText());
     ui->input1SEMDisplay->setText(input1.getSEMText());
 }
+
+
+void MainWindow::on_input2SubmitButton_clicked()
+{
+    //clear error msg
+    ui->input2ErrorDisplay->clear();
+
+    switch (ui->input2FormatSelector->currentIndex()) { //switch to run different functions depending on format selection index
+
+    case 0: //binary
+        //run setBinaryValue, display error msg and return on fail
+        if (not input2.setBinaryValue(ui->input2PlainTextEdit->toPlainText())) {
+            ui->input2ErrorDisplay->setText("Formatting Error: expecting binary");
+            return;
+        }
+        break;
+
+    case 1: //decimal
+        //run setDecimalValue, display error msg and return on fail
+        if (not input2.setDecimalValue(ui->input2PlainTextEdit->toPlainText())) {
+            ui->input2ErrorDisplay->setText("Formatting Error: expecting decimal");
+            return;
+        }
+        break;
+
+    case 2: //hex
+        //run setHexValue, display error msg and return on fail
+        if (not input2.setHexValue(ui->input2PlainTextEdit->toPlainText())) {
+            ui->input2ErrorDisplay->setText("Formatting Error: expecting hex");
+            return;
+        }
+        break;
+
+    case 3: //SEM
+        //run setSEMValue, display error msg and return on fail
+        if (not input2.setSEMValue(ui->input2PlainTextEdit->toPlainText())) {
+            ui->input2ErrorDisplay->setText("Formatting Error: expecting SEM");
+            return;
+        }
+        break;
+
+    }
+
+    //display results
+    ui->input2BinaryDisplay->setText(input2.getBinaryText());
+    ui->input2DecimalDisplay->setText(input2.getDecimalText());
+    ui->input2HexDisplay->setText(input2.getHexText());
+    ui->input2SEMDisplay->setText(input2.getSEMText());
+}
+
+void MainWindow::on_operationSubmitButton_clicked()
+{
+    //clear error msg
+    ui->outputErrorDisplay->clear();
+
+    switch (ui->operationSelectorComboBox->currentIndex()) { //switch to run different functions depending on format selection index
+
+    case 0: //addition
+        output.setValue(input1.getValue() + input2.getValue());
+        break;
+
+    case 1: //subtraction
+        output.setValue(input1.getValue() - input2.getValue());
+        break;
+
+    case 2: //multiplication
+        output.setValue(input1.getValue() * input2.getValue());
+        break;
+    }
+
+    //display results
+    ui->outputBinaryDisplay->setText(output.getBinaryText());
+    ui->outputDecimalDisplay->setText(output.getDecimalText());
+    ui->outputHexDisplay->setText(output.getHexText());
+    ui->outputSEMDisplay->setText(output.getSEMText());
+}
+
