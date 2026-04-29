@@ -40,11 +40,11 @@ public:
     QLabel *input1HexDisplay;
     QLabel *input1SEMLabel;
     QLabel *input1SEMDisplay;
-    QLabel *input1ErrorDisplay;
     QPlainTextEdit *input1PlainTextEdit;
     QVBoxLayout *verticalLayout;
     QComboBox *input1FormatSelector;
     QPushButton *input1SubmitButton;
+    QLabel *input1ErrorDisplay;
     QWidget *formLayoutWidget_2;
     QFormLayout *input2Layout;
     QLabel *input2MasterLabel;
@@ -90,7 +90,7 @@ public:
         centralwidget->setObjectName("centralwidget");
         formLayoutWidget = new QWidget(centralwidget);
         formLayoutWidget->setObjectName("formLayoutWidget");
-        formLayoutWidget->setGeometry(QRect(20, 10, 282, 204));
+        formLayoutWidget->setGeometry(QRect(20, 10, 301, 204));
         input1Layout = new QFormLayout(formLayoutWidget);
         input1Layout->setObjectName("input1Layout");
         input1Layout->setContentsMargins(0, 0, 0, 0);
@@ -139,11 +139,6 @@ public:
 
         input1Layout->setWidget(5, QFormLayout::ItemRole::FieldRole, input1SEMDisplay);
 
-        input1ErrorDisplay = new QLabel(formLayoutWidget);
-        input1ErrorDisplay->setObjectName("input1ErrorDisplay");
-
-        input1Layout->setWidget(0, QFormLayout::ItemRole::FieldRole, input1ErrorDisplay);
-
         input1PlainTextEdit = new QPlainTextEdit(formLayoutWidget);
         input1PlainTextEdit->setObjectName("input1PlainTextEdit");
 
@@ -168,9 +163,14 @@ public:
 
         input1Layout->setLayout(1, QFormLayout::ItemRole::LabelRole, verticalLayout);
 
+        input1ErrorDisplay = new QLabel(formLayoutWidget);
+        input1ErrorDisplay->setObjectName("input1ErrorDisplay");
+
+        input1Layout->setWidget(0, QFormLayout::ItemRole::FieldRole, input1ErrorDisplay);
+
         formLayoutWidget_2 = new QWidget(centralwidget);
         formLayoutWidget_2->setObjectName("formLayoutWidget_2");
-        formLayoutWidget_2->setGeometry(QRect(310, 10, 282, 204));
+        formLayoutWidget_2->setGeometry(QRect(340, 10, 301, 204));
         input2Layout = new QFormLayout(formLayoutWidget_2);
         input2Layout->setObjectName("input2Layout");
         input2Layout->setContentsMargins(0, 0, 0, 0);
@@ -250,7 +250,7 @@ public:
 
         formLayoutWidget_3 = new QWidget(centralwidget);
         formLayoutWidget_3->setObjectName("formLayoutWidget_3");
-        formLayoutWidget_3->setGeometry(QRect(310, 230, 271, 111));
+        formLayoutWidget_3->setGeometry(QRect(340, 230, 301, 111));
         outputLayout = new QFormLayout(formLayoutWidget_3);
         outputLayout->setObjectName("outputLayout");
         outputLayout->setContentsMargins(0, 0, 0, 0);
@@ -306,7 +306,7 @@ public:
 
         horizontalLayoutWidget = new QWidget(centralwidget);
         horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
-        horizontalLayoutWidget->setGeometry(QRect(80, 240, 185, 80));
+        horizontalLayoutWidget->setGeometry(QRect(90, 240, 185, 80));
         operationLayout = new QHBoxLayout(horizontalLayoutWidget);
         operationLayout->setObjectName("operationLayout");
         operationLayout->setContentsMargins(0, 0, 0, 0);
@@ -345,7 +345,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        input1MasterLabel->setText(QCoreApplication::translate("MainWindow", "Input 1", nullptr));
+        input1MasterLabel->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:700;\">Input 1</span></p></body></html>", nullptr));
         input1BinaryLabel->setText(QCoreApplication::translate("MainWindow", "Binary", nullptr));
         input1BinaryDisplay->setText(QCoreApplication::translate("MainWindow", "00000000000000000000000000000000", nullptr));
         input1DecimalLabel->setText(QCoreApplication::translate("MainWindow", "Decimal", nullptr));
@@ -354,14 +354,14 @@ public:
         input1HexDisplay->setText(QCoreApplication::translate("MainWindow", "00000000000000000000000000000000", nullptr));
         input1SEMLabel->setText(QCoreApplication::translate("MainWindow", "SEM", nullptr));
         input1SEMDisplay->setText(QCoreApplication::translate("MainWindow", "00000000000000000000000000000000", nullptr));
-        input1ErrorDisplay->setText(QCoreApplication::translate("MainWindow", "ERRORMSG", nullptr));
         input1FormatSelector->setItemText(0, QCoreApplication::translate("MainWindow", "Binary", nullptr));
         input1FormatSelector->setItemText(1, QCoreApplication::translate("MainWindow", "Decimal", nullptr));
         input1FormatSelector->setItemText(2, QCoreApplication::translate("MainWindow", "Hex", nullptr));
         input1FormatSelector->setItemText(3, QCoreApplication::translate("MainWindow", "SEM", nullptr));
 
         input1SubmitButton->setText(QCoreApplication::translate("MainWindow", "Submit", nullptr));
-        input2MasterLabel->setText(QCoreApplication::translate("MainWindow", "Input 2", nullptr));
+        input1ErrorDisplay->setText(QCoreApplication::translate("MainWindow", "ERRORMSG", nullptr));
+        input2MasterLabel->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:700;\">Input 2</span></p></body></html>", nullptr));
         input2BinaryLabel->setText(QCoreApplication::translate("MainWindow", "Binary", nullptr));
         input2BinaryDisplay->setText(QCoreApplication::translate("MainWindow", "00000000000000000000000000000000", nullptr));
         input2DecimalLabel->setText(QCoreApplication::translate("MainWindow", "Decimal", nullptr));
@@ -377,7 +377,7 @@ public:
         input2FormatSelector->setItemText(3, QCoreApplication::translate("MainWindow", "SEM", nullptr));
 
         input2SubmitButton->setText(QCoreApplication::translate("MainWindow", "Submit", nullptr));
-        outputMasterLabel->setText(QCoreApplication::translate("MainWindow", "Output", nullptr));
+        outputMasterLabel->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:700;\">Output</span></p></body></html>", nullptr));
         outputErrorDisplay->setText(QCoreApplication::translate("MainWindow", "ERRORMSG", nullptr));
         outputBinaryLabel->setText(QCoreApplication::translate("MainWindow", "Binary", nullptr));
         outputBinaryDisplay->setText(QCoreApplication::translate("MainWindow", "00000000000000000000000000000000", nullptr));

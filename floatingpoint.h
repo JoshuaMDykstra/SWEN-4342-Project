@@ -28,7 +28,6 @@ public:
 private:
     //stores numeric value of float
     float value;
-
 };
 
 #endif // FLOATINGPOINT_H
