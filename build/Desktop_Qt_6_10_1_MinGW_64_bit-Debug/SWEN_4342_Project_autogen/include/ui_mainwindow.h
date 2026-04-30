@@ -90,7 +90,7 @@ public:
         centralwidget->setObjectName("centralwidget");
         formLayoutWidget = new QWidget(centralwidget);
         formLayoutWidget->setObjectName("formLayoutWidget");
-        formLayoutWidget->setGeometry(QRect(20, 10, 301, 204));
+        formLayoutWidget->setGeometry(QRect(20, 10, 421, 204));
         input1Layout = new QFormLayout(formLayoutWidget);
         input1Layout->setObjectName("input1Layout");
         input1Layout->setContentsMargins(0, 0, 0, 0);
@@ -170,7 +170,7 @@ public:
 
         formLayoutWidget_2 = new QWidget(centralwidget);
         formLayoutWidget_2->setObjectName("formLayoutWidget_2");
-        formLayoutWidget_2->setGeometry(QRect(340, 10, 301, 204));
+        formLayoutWidget_2->setGeometry(QRect(450, 10, 441, 204));
         input2Layout = new QFormLayout(formLayoutWidget_2);
         input2Layout->setObjectName("input2Layout");
         input2Layout->setContentsMargins(0, 0, 0, 0);
@@ -250,7 +250,7 @@ public:
 
         formLayoutWidget_3 = new QWidget(centralwidget);
         formLayoutWidget_3->setObjectName("formLayoutWidget_3");
-        formLayoutWidget_3->setGeometry(QRect(340, 230, 301, 111));
+        formLayoutWidget_3->setGeometry(QRect(450, 230, 441, 111));
         outputLayout = new QFormLayout(formLayoutWidget_3);
         outputLayout->setObjectName("outputLayout");
         outputLayout->setContentsMargins(0, 0, 0, 0);
@@ -306,7 +306,7 @@ public:
 
         horizontalLayoutWidget = new QWidget(centralwidget);
         horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
-        horizontalLayoutWidget->setGeometry(QRect(90, 240, 185, 80));
+        horizontalLayoutWidget->setGeometry(QRect(130, 240, 185, 80));
         operationLayout = new QHBoxLayout(horizontalLayoutWidget);
         operationLayout->setObjectName("operationLayout");
         operationLayout->setContentsMargins(0, 0, 0, 0);

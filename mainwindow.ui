@@ -19,7 +19,7 @@
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>301</width>
+      <width>421</width>
       <height>204</height>
      </rect>
     </property>
@@ -137,9 +137,9 @@
    <widget class="QWidget" name="formLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>450</x>
       <y>10</y>
-      <width>301</width>
+      <width>441</width>
       <height>204</height>
      </rect>
     </property>
@@ -257,9 +257,9 @@
    <widget class="QWidget" name="formLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>450</x>
       <y>230</y>
-      <width>301</width>
+      <width>441</width>
       <height>111</height>
      </rect>
     </property>
@@ -339,7 +339,7 @@
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>130</x>
       <y>240</y>
       <width>185</width>
       <height>80</height>

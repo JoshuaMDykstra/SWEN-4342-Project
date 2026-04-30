@@ -24,7 +24,7 @@ bool floatingPoint::setBinaryValue(QString input) {
 
     //check if input only contains valid characters
     for (int i = 0; i < stdStringInput.size(); i++) {
-        if (stdStringInput[i] != '0' || stdStringInput[i] != '1') {
+        if (stdStringInput[i] != '0' and stdStringInput[i] != '1') {
             return false;
         }
     }
@@ -32,7 +32,8 @@ bool floatingPoint::setBinaryValue(QString input) {
     //variables
     char sign = stdStringInput[0];
     std::string mantissaString, exponentString;
-    float mantissaValue, exponentValue = 0.0;
+    float mantissaValue = 0.0;
+    float exponentValue = 0.0;
 
     //pull exponent bits from input
     for (int i = 1; i < 9; i++) {
@@ -151,10 +152,87 @@ bool floatingPoint::setHexValue(QString input) {
 bool floatingPoint::setSEMValue(QString input) {
     //take in input text in SEM format and convert to and store as a float, return false if conversion fails
 
-    std::string stdStringInput = input.toStdString();
-    //TODO
+    const std::string formatting1 = "-1^(";
+    const std::string formatting2 =  ")x1+0.";
+    const std::string formatting3 = "x2^(";
+    const std::string formatting4 = "-127)";
 
-    return false;
+    //variables
+    char sign;
+    std::string mantissa, exponent;
+
+    std::string stdStringInput = input.toStdString();
+
+    //check for 1st formatting section
+    for (int i = 0; i < formatting1.size(); i++) {
+        if (stdStringInput[i] != formatting1[i]) {
+            return false;
+        }
+    }
+
+    //remove 1st formatting section
+    stdStringInput.erase (0,4);
+
+    //check for and pull out sign value
+    if (stdStringInput[0] == '0' or stdStringInput[0] == '1') {
+        sign = stdStringInput[0];
+        stdStringInput.erase (0,1);
+    } else {
+        return false;
+    }
+
+    //check for 2nd formatting sectio
+    for (int i = 0; i < formatting2.size(); i++) {
+        if (stdStringInput[i] != formatting2[i]) {
+            return false;
+        }
+    }
+
+    //remove 2nd formatting section
+    stdStringInput.erase (0,6);
+
+    //check next character is a digit
+    if (not isdigit(stdStringInput[0])) {
+        return false;
+    }
+
+    //extract mantissa
+    while (isdigit(stdStringInput[0])) {
+        mantissa += stdStringInput[0];
+        stdStringInput.erase (0,1);
+    }
+
+    //check for 3rd formatting sectio
+    for (int i = 0; i < formatting3.size(); i++) {
+        if (stdStringInput[i] != formatting3[i]) {
+            return false;
+        }
+    }
+
+    //remove 3rd formatting section
+    stdStringInput.erase (0,4);
+
+    //check next character is a digit
+    if (not isdigit(stdStringInput[0])) {
+        return false;
+    }
+
+    //extract exponent
+    while (isdigit(stdStringInput[0])) {
+        exponent += stdStringInput[0];
+        stdStringInput.erase (0,1);
+    }
+
+    //check for 4th formatting sectio
+    for (int i = 0; i < formatting4.size(); i++) {
+        if (stdStringInput[i] != formatting4[i]) {
+            return false;
+        }
+    }
+
+    //set value and return success
+    value = pow(-1.0, sign - '0') * (1.0 + stof(mantissa)) * pow(2.0, stoi(exponent) - 127);
+    return true;
 }
 
 QString floatingPoint::getBinaryText() {
@@ -300,8 +378,27 @@ QString floatingPoint::getHexText() {
 QString floatingPoint::getSEMText() {
     //returns stored float converted to SEM text
 
-    //TODO
+    std::string output;
+    int sign = 0;
+    int exponent = 0;
+    float mantissa = value;
 
-    std::string output = "TODO";
+    if (value < 0) {
+        sign = 1;
+    }
+
+    while (mantissa >= 2.0) {
+        exponent++;
+        mantissa = mantissa / 2.0;
+    }
+
+    output += "-1^(";
+    output += std::to_string(sign);
+    output += ")x1+";
+    output += std::to_string(mantissa - 1.0);
+    output += "x2^(";
+    output += std::to_string(exponent + 127);
+    output += "-127)";
+
     return QString::fromStdString(output);
 }
