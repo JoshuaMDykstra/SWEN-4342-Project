@@ -151,6 +151,7 @@ public:
         input1FormatSelector->addItem(QString());
         input1FormatSelector->addItem(QString());
         input1FormatSelector->addItem(QString());
+        input1FormatSelector->addItem(QString());
         input1FormatSelector->setObjectName("input1FormatSelector");
 
         verticalLayout->addWidget(input1FormatSelector);
@@ -232,6 +233,7 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName("verticalLayout_2");
         input2FormatSelector = new QComboBox(formLayoutWidget_2);
+        input2FormatSelector->addItem(QString());
         input2FormatSelector->addItem(QString());
         input2FormatSelector->addItem(QString());
         input2FormatSelector->addItem(QString());
@@ -354,13 +356,14 @@ public:
         input1HexDisplay->setText(QCoreApplication::translate("MainWindow", "00000000000000000000000000000000", nullptr));
         input1SEMLabel->setText(QCoreApplication::translate("MainWindow", "SEM", nullptr));
         input1SEMDisplay->setText(QCoreApplication::translate("MainWindow", "00000000000000000000000000000000", nullptr));
-        input1FormatSelector->setItemText(0, QCoreApplication::translate("MainWindow", "Binary", nullptr));
-        input1FormatSelector->setItemText(1, QCoreApplication::translate("MainWindow", "Decimal", nullptr));
-        input1FormatSelector->setItemText(2, QCoreApplication::translate("MainWindow", "Hex", nullptr));
-        input1FormatSelector->setItemText(3, QCoreApplication::translate("MainWindow", "SEM", nullptr));
+        input1FormatSelector->setItemText(0, QCoreApplication::translate("MainWindow", "Format", nullptr));
+        input1FormatSelector->setItemText(1, QCoreApplication::translate("MainWindow", "Binary", nullptr));
+        input1FormatSelector->setItemText(2, QCoreApplication::translate("MainWindow", "Decimal", nullptr));
+        input1FormatSelector->setItemText(3, QCoreApplication::translate("MainWindow", "Hex", nullptr));
+        input1FormatSelector->setItemText(4, QCoreApplication::translate("MainWindow", "SEM", nullptr));
 
         input1SubmitButton->setText(QCoreApplication::translate("MainWindow", "Submit", nullptr));
-        input1ErrorDisplay->setText(QCoreApplication::translate("MainWindow", "ERRORMSG", nullptr));
+        input1ErrorDisplay->setText(QCoreApplication::translate("MainWindow", "Message", nullptr));
         input2MasterLabel->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:700;\">Input 2</span></p></body></html>", nullptr));
         input2BinaryLabel->setText(QCoreApplication::translate("MainWindow", "Binary", nullptr));
         input2BinaryDisplay->setText(QCoreApplication::translate("MainWindow", "00000000000000000000000000000000", nullptr));
@@ -370,15 +373,16 @@ public:
         input2HexDisplay->setText(QCoreApplication::translate("MainWindow", "00000000000000000000000000000000", nullptr));
         input2SEMLabel->setText(QCoreApplication::translate("MainWindow", "SEM", nullptr));
         input2SEMDisplay->setText(QCoreApplication::translate("MainWindow", "00000000000000000000000000000000", nullptr));
-        input2ErrorDisplay->setText(QCoreApplication::translate("MainWindow", "ERRORMSG", nullptr));
-        input2FormatSelector->setItemText(0, QCoreApplication::translate("MainWindow", "Binary", nullptr));
-        input2FormatSelector->setItemText(1, QCoreApplication::translate("MainWindow", "Decimal", nullptr));
-        input2FormatSelector->setItemText(2, QCoreApplication::translate("MainWindow", "Hex", nullptr));
-        input2FormatSelector->setItemText(3, QCoreApplication::translate("MainWindow", "SEM", nullptr));
+        input2ErrorDisplay->setText(QCoreApplication::translate("MainWindow", "Message", nullptr));
+        input2FormatSelector->setItemText(0, QCoreApplication::translate("MainWindow", "Format", nullptr));
+        input2FormatSelector->setItemText(1, QCoreApplication::translate("MainWindow", "Binary", nullptr));
+        input2FormatSelector->setItemText(2, QCoreApplication::translate("MainWindow", "Decimal", nullptr));
+        input2FormatSelector->setItemText(3, QCoreApplication::translate("MainWindow", "Hex", nullptr));
+        input2FormatSelector->setItemText(4, QCoreApplication::translate("MainWindow", "SEM", nullptr));
 
         input2SubmitButton->setText(QCoreApplication::translate("MainWindow", "Submit", nullptr));
         outputMasterLabel->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:700;\">Output</span></p></body></html>", nullptr));
-        outputErrorDisplay->setText(QCoreApplication::translate("MainWindow", "ERRORMSG", nullptr));
+        outputErrorDisplay->setText(QString());
         outputBinaryLabel->setText(QCoreApplication::translate("MainWindow", "Binary", nullptr));
         outputBinaryDisplay->setText(QCoreApplication::translate("MainWindow", "00000000000000000000000000000000", nullptr));
         outputDecimalLabel->setText(QCoreApplication::translate("MainWindow", "Decimal", nullptr));

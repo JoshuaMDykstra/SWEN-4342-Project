@@ -38,6 +38,18 @@ bool floatingPoint::setDecimalValue(QString input) {
 
     std::string userinput = input.toStdString();
 
+    int digitCount = 0;
+
+    for (int i = 0; i < userinput.size(); i++) {
+        if (isdigit(userinput[i])) {
+            digitCount++;
+        }
+    }
+
+    if (digitCount > 32) {
+        return false;
+    }
+
     int i = 0;
     int decimalcount = 0;
     int decimalposition = 0;

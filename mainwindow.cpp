@@ -23,7 +23,7 @@ void MainWindow::on_input1SubmitButton_clicked() //run when submit button for in
 
     switch (ui->input1FormatSelector->currentIndex()) { //switch to run different functions depending on format selection index
 
-    case 0: //binary
+    case 1: //binary
         //run setBinaryValue, display error msg and return on fail
         if (not input1.setBinaryValue(ui->input1PlainTextEdit->toPlainText())) {
             ui->input1ErrorDisplay->setText("Formatting Error: expecting 32 bit binary");
@@ -31,7 +31,7 @@ void MainWindow::on_input1SubmitButton_clicked() //run when submit button for in
         }
         break;
 
-    case 1: //decimal
+    case 2: //decimal
         //run setDecimalValue, display error msg and return on fail
         if (not input1.setDecimalValue(ui->input1PlainTextEdit->toPlainText())) {
             ui->input1ErrorDisplay->setText("Formatting Error: expecting decimal");
@@ -39,7 +39,7 @@ void MainWindow::on_input1SubmitButton_clicked() //run when submit button for in
         }
         break;
 
-    case 2: //hex
+    case 3: //hex
         //run setHexValue, display error msg and return on fail
         if (not input1.setHexValue(ui->input1PlainTextEdit->toPlainText())) {
             ui->input1ErrorDisplay->setText("Formatting Error: expecting 8 digit hex");
@@ -47,7 +47,7 @@ void MainWindow::on_input1SubmitButton_clicked() //run when submit button for in
         }
         break;
 
-    case 3: //SEM
+    case 4: //SEM
         //run setSEMValue, display error msg and return on fail
         if (not input1.setSEMValue(ui->input1PlainTextEdit->toPlainText())) {
             ui->input1ErrorDisplay->setText("Formatting Error: expecting SEM");
@@ -72,7 +72,7 @@ void MainWindow::on_input2SubmitButton_clicked()
 
     switch (ui->input2FormatSelector->currentIndex()) { //switch to run different functions depending on format selection index
 
-    case 0: //binary
+    case 1: //binary
         //run setBinaryValue, display error msg and return on fail
         if (not input2.setBinaryValue(ui->input2PlainTextEdit->toPlainText())) {
             ui->input2ErrorDisplay->setText("Formatting Error: expecting 32 bit binary");
@@ -80,7 +80,7 @@ void MainWindow::on_input2SubmitButton_clicked()
         }
         break;
 
-    case 1: //decimal
+    case 2: //decimal
         //run setDecimalValue, display error msg and return on fail
         if (not input2.setDecimalValue(ui->input2PlainTextEdit->toPlainText())) {
             ui->input2ErrorDisplay->setText("Formatting Error: expecting decimal");
@@ -88,7 +88,7 @@ void MainWindow::on_input2SubmitButton_clicked()
         }
         break;
 
-    case 2: //hex
+    case 3: //hex
         //run setHexValue, display error msg and return on fail
         if (not input2.setHexValue(ui->input2PlainTextEdit->toPlainText())) {
             ui->input2ErrorDisplay->setText("Formatting Error: expecting 8 digit hex");
@@ -96,7 +96,7 @@ void MainWindow::on_input2SubmitButton_clicked()
         }
         break;
 
-    case 3: //SEM
+    case 4: //SEM
         //run setSEMValue, display error msg and return on fail
         if (not input2.setSEMValue(ui->input2PlainTextEdit->toPlainText())) {
             ui->input2ErrorDisplay->setText("Formatting Error: expecting SEM");
@@ -143,10 +143,12 @@ void MainWindow::on_operationSubmitButton_clicked()
 
 void MainWindow::on_input1FormatSelector_currentIndexChanged(int index)
 {
+    //clear error msg
+    ui->input1ErrorDisplay->clear();
 
     switch (ui->input1FormatSelector->currentIndex()) { //switch to run different functions depending on format selection index
 
-    case 0: //binary
+    case 1: //binary
         //run setBinaryValue, display error msg and return on fail
         if (not input1.setBinaryValue(ui->input1PlainTextEdit->toPlainText())) {
             ui->input1ErrorDisplay->setText("Format: 10101010101010101010101010101010");
@@ -154,7 +156,7 @@ void MainWindow::on_input1FormatSelector_currentIndexChanged(int index)
         }
         break;
 
-    case 1: //decimal
+    case 2: //decimal
         //run setDecimalValue, display error msg and return on fail
         if (not input1.setDecimalValue(ui->input1PlainTextEdit->toPlainText())) {
             ui->input1ErrorDisplay->setText("Format: ...1.0...");
@@ -162,7 +164,7 @@ void MainWindow::on_input1FormatSelector_currentIndexChanged(int index)
         }
         break;
 
-    case 2: //hex
+    case 3: //hex
         //run setHexValue, display error msg and return on fail
         if (not input1.setHexValue(ui->input1PlainTextEdit->toPlainText())) {
             ui->input1ErrorDisplay->setText("Format: F0F0F0F0");
@@ -170,7 +172,7 @@ void MainWindow::on_input1FormatSelector_currentIndexChanged(int index)
         }
         break;
 
-    case 3: //SEM
+    case 4: //SEM
         //run setSEMValue, display error msg and return on fail
         if (not input1.setSEMValue(ui->input1PlainTextEdit->toPlainText())) {
             ui->input1ErrorDisplay->setText("Format: -1^(SIGN)x1+0.MANTISSAx2^(EXPONENT-127)");
@@ -184,10 +186,12 @@ void MainWindow::on_input1FormatSelector_currentIndexChanged(int index)
 
 void MainWindow::on_input2FormatSelector_currentIndexChanged(int index)
 {
+    //clear error msg
+    ui->input1ErrorDisplay->clear();
 
     switch (ui->input2FormatSelector->currentIndex()) { //switch to run different functions depending on format selection index
 
-    case 0: //binary
+    case 1: //binary
         //run setBinaryValue, display error msg and return on fail
         if (not input2.setBinaryValue(ui->input2PlainTextEdit->toPlainText())) {
             ui->input2ErrorDisplay->setText("Format: 10101010101010101010101010101010");
@@ -195,7 +199,7 @@ void MainWindow::on_input2FormatSelector_currentIndexChanged(int index)
         }
         break;
 
-    case 1: //decimal
+    case 2: //decimal
         //run setDecimalValue, display error msg and return on fail
         if (not input2.setDecimalValue(ui->input2PlainTextEdit->toPlainText())) {
             ui->input2ErrorDisplay->setText("Format: ...1.0...");
@@ -203,7 +207,7 @@ void MainWindow::on_input2FormatSelector_currentIndexChanged(int index)
         }
         break;
 
-    case 2: //hex
+    case 3: //hex
         //run setHexValue, display error msg and return on fail
         if (not input2.setHexValue(ui->input2PlainTextEdit->toPlainText())) {
             ui->input2ErrorDisplay->setText("Format: F0F0F0F0");
@@ -211,14 +215,13 @@ void MainWindow::on_input2FormatSelector_currentIndexChanged(int index)
         }
         break;
 
-    case 3: //SEM
+    case 4: //SEM
         //run setSEMValue, display error msg and return on fail
         if (not input2.setSEMValue(ui->input2PlainTextEdit->toPlainText())) {
             ui->input2ErrorDisplay->setText("Format: -1^(SIGN)x1+0.MANTISSAx2^(EXPONENT-127)");
             return;
         }
         break;
-
     }
 }
 
