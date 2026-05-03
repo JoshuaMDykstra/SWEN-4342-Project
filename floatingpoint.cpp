@@ -29,45 +29,7 @@ bool floatingPoint::setBinaryValue(QString input) {
         }
     }
 
-    //variables
-    char sign = stdStringInput[0];
-    std::string mantissaString, exponentString;
-    float mantissaValue = 0.0;
-    float exponentValue = 0.0;
-
-    //pull exponent bits from input
-    for (int i = 1; i < 9; i++) {
-
-        exponentString += stdStringInput[i];
-    }
-
-    //pull mantissa bits from input
-    for (int i = 9; i < 32; i++) {
-
-        mantissaString += stdStringInput[i];
-    }
-
-    //reverse exponent string
-    std::reverse(exponentString.begin(), exponentString.end());
-
-    //convert exponent bits to decimal value
-    for (int i = 0; i < exponentString.size(); i++) {
-
-        if (exponentString[i] == '1') {
-            exponentValue += pow(2.0, i);
-        }
-    }
-
-    //convert mantissa bits to decimal value (mantissa bits are read left to right)
-    for (int i = 0; i < mantissaString.size(); i++) {
-
-        if (mantissaString[i] == '1') {
-            mantissaValue += pow(0.5, i + 1);
-        }
-    }
-
-    //set value and return success
-    value = pow(-1.0, sign - '0') * (1.0 + mantissaValue) * pow(2.0, exponentValue - 127.0);
+    value = binToFloat(stdStringInput);
     return true;
 }
 bool floatingPoint::setDecimalValue(QString input) {
@@ -95,9 +57,11 @@ bool floatingPoint::setDecimalValue(QString input) {
         sign = -1;
     }
     for(i=start; (userinput[i]!='\0'); i++){
-        if( !((userinput[i] == '0') || (userinput[i] == '1') || (userinput[i] == '2') || (userinput[i] == '3') || (userinput[i] == '4') || (userinput[i] == '5') || (userinput[i] == '6') || (userinput[i] == '7') || (userinput[i] == '8') || (userinput[i] == '9') || (userinput[i] == '.'))){            //'1','2','3','4','5','6','7','8','9','.'        !(('0' <= userinput[i] <= '9') || (userinput[i] == '.'))
-            //printf("index %d is char ", i);
-            //printf("%c\n", userinput[i]);
+        if( !((userinput[i] == '0') || (userinput[i] == '1') || (userinput[i] == '2') || (userinput[i] == '3') || (userinput[i] == '4')
+              || (userinput[i] == '5') || (userinput[i] == '6') || (userinput[i] == '7') || (userinput[i] == '8') || (userinput[i] == '9')
+              || (userinput[i] == '.'))){
+            //'1','2','3','4','5','6','7','8','9','.'        !(('0' <= userinput[i] <= '9') || (userinput[i] == '.'))
+
             return false;
         }
         else{
@@ -119,7 +83,6 @@ bool floatingPoint::setDecimalValue(QString input) {
         i++;
     }
     integerpart = (float)tempint;
-    //printf("\ninteger part: %f", integerpart);
 
     //gets decimal part of float
     if((decimalcount == 1) && (userinput[decimalposition+1] != '\0')){
@@ -133,7 +96,6 @@ bool floatingPoint::setDecimalValue(QString input) {
         //testfloat = (((float)(tempint))/((float)(tempint2)));
         userfloat = sign * (integerpart + (((float)(tempint))/((float)(tempint2))));
         value = userfloat;
-        //printf("\ndecimal part: %f", testfloat);
     }else{
         userfloat = sign * integerpart;
         value = userfloat;
@@ -144,10 +106,66 @@ bool floatingPoint::setDecimalValue(QString input) {
 bool floatingPoint::setHexValue(QString input) {
     //take in input text in hex format and convert to and store as a float, return false if conversion fails
 
-    //TODO
     std::string stdStringInput = input.toStdString();
 
-    return false;
+    //variables
+    std::string binString;
+    std::vector<int> hexDigits;
+
+    //check input length
+    if (stdStringInput.size() != 8) {
+        return false;
+    }
+
+    //check validity of input characters and store their integer values
+    for (int i = 0; i < stdStringInput.size(); i++) {
+        if (isdigit(stdStringInput[i])) {
+            hexDigits.push_back(stdStringInput[i] - '0');
+        }
+        else if (stdStringInput[i] == 'a' or stdStringInput[i] == 'A') {
+            hexDigits.push_back(10);
+        }
+        else if (stdStringInput[i] == 'b' or stdStringInput[i] == 'B') {
+            hexDigits.push_back(11);
+        }
+        else if (stdStringInput[i] == 'c' or stdStringInput[i] == 'C') {
+            hexDigits.push_back(12);
+        }
+        else if (stdStringInput[i] == 'd' or stdStringInput[i] == 'D') {
+            hexDigits.push_back(13);
+        }
+        else if (stdStringInput[i] == 'e' or stdStringInput[i] == 'E') {
+            hexDigits.push_back(14);
+        }
+        else if (stdStringInput[i] == 'f' or stdStringInput[i] == 'F') {
+            hexDigits.push_back(15);
+        }
+        else {
+            return false;
+        }
+    }
+
+    //convert into binary
+    for (int i = 0; i < hexDigits.size(); i++) {
+
+        std::string binDigit = "0000";
+
+        for (int j = 0; j < 4; j++) {
+
+
+            if (hexDigits[i] >= (int)pow(2, 3 - j)) {
+
+                binDigit[j] = '1';
+                hexDigits[i] -= (int)pow(2, 3 - j);
+            }
+        }
+
+        binString += binDigit;
+    }
+
+    //return decoded binary value
+    value = binToFloat(binString);
+    return true;
 }
 bool floatingPoint::setSEMValue(QString input) {
     //take in input text in SEM format and convert to and store as a float, return false if conversion fails
@@ -276,7 +294,6 @@ QString floatingPoint::getBinaryText() {
 QString floatingPoint::getDecimalText() {
     //returns stored float converted to decimal text
 
-    //TEMP
     std::string output = std::to_string(value);
     return QString::fromStdString(output);
 }
@@ -383,15 +400,19 @@ QString floatingPoint::getSEMText() {
     int exponent = 0;
     float mantissa = value;
 
-    if (value < 0) {
+    //get sign value
+    if (mantissa < 0) {
+        mantissa *= -1;
         sign = 1;
     }
 
+    //get calculate mantissa and exponents
     while (mantissa >= 2.0) {
         exponent++;
         mantissa = mantissa / 2.0;
     }
 
+    //construct output string
     output += "-1^(";
     output += std::to_string(sign);
     output += ")x1+";
@@ -400,5 +421,49 @@ QString floatingPoint::getSEMText() {
     output += std::to_string(exponent + 127);
     output += "-127)";
 
+    //return output
     return QString::fromStdString(output);
+}
+
+float floatingPoint::binToFloat(std::string binaryText) {
+
+    //variables
+    char sign = binaryText[0];
+    std::string mantissaString, exponentString;
+    float mantissaValue = 0.0;
+    float exponentValue = 0.0;
+
+    //pull exponent bits from input
+    for (int i = 1; i < 9; i++) {
+
+        exponentString += binaryText[i];
+    }
+
+    //pull mantissa bits from input
+    for (int i = 9; i < 32; i++) {
+
+        mantissaString += binaryText[i];
+    }
+
+    //reverse exponent string
+    std::reverse(exponentString.begin(), exponentString.end());
+
+    //convert exponent bits to decimal value
+    for (int i = 0; i < exponentString.size(); i++) {
+
+        if (exponentString[i] == '1') {
+            exponentValue += pow(2.0, i);
+        }
+    }
+
+    //convert mantissa bits to decimal value (mantissa bits are read left to right)
+    for (int i = 0; i < mantissaString.size(); i++) {
+
+        if (mantissaString[i] == '1') {
+            mantissaValue += pow(0.5, i + 1);
+        }
+    }
+
+    //return result
+    return pow(-1.0, sign - '0') * (1.0 + mantissaValue) * pow(2.0, exponentValue - 127.0);
 }

@@ -28,6 +28,8 @@ public:
 private:
     //stores numeric value of float
     float value;
+
+    float binToFloat(std::string binaryText);
 };
 
 #endif // FLOATINGPOINT_H

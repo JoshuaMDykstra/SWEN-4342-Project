@@ -26,7 +26,7 @@ void MainWindow::on_input1SubmitButton_clicked() //run when submit button for in
     case 0: //binary
         //run setBinaryValue, display error msg and return on fail
         if (not input1.setBinaryValue(ui->input1PlainTextEdit->toPlainText())) {
-            ui->input1ErrorDisplay->setText("Formatting Error: expecting binary");
+            ui->input1ErrorDisplay->setText("Formatting Error: expecting 32 bit binary");
             return;
         }
         break;
@@ -42,7 +42,7 @@ void MainWindow::on_input1SubmitButton_clicked() //run when submit button for in
     case 2: //hex
         //run setHexValue, display error msg and return on fail
         if (not input1.setHexValue(ui->input1PlainTextEdit->toPlainText())) {
-            ui->input1ErrorDisplay->setText("Formatting Error: expecting hex");
+            ui->input1ErrorDisplay->setText("Formatting Error: expecting 8 digit hex");
             return;
         }
         break;
@@ -75,7 +75,7 @@ void MainWindow::on_input2SubmitButton_clicked()
     case 0: //binary
         //run setBinaryValue, display error msg and return on fail
         if (not input2.setBinaryValue(ui->input2PlainTextEdit->toPlainText())) {
-            ui->input2ErrorDisplay->setText("Formatting Error: expecting binary");
+            ui->input2ErrorDisplay->setText("Formatting Error: expecting 32 bit binary");
             return;
         }
         break;
@@ -91,7 +91,7 @@ void MainWindow::on_input2SubmitButton_clicked()
     case 2: //hex
         //run setHexValue, display error msg and return on fail
         if (not input2.setHexValue(ui->input2PlainTextEdit->toPlainText())) {
-            ui->input2ErrorDisplay->setText("Formatting Error: expecting hex");
+            ui->input2ErrorDisplay->setText("Formatting Error: expecting 8 digit hex");
             return;
         }
         break;
@@ -165,7 +165,7 @@ void MainWindow::on_input1FormatSelector_currentIndexChanged(int index)
     case 2: //hex
         //run setHexValue, display error msg and return on fail
         if (not input1.setHexValue(ui->input1PlainTextEdit->toPlainText())) {
-            ui->input1ErrorDisplay->setText("TODO");
+            ui->input1ErrorDisplay->setText("Format: F0F0F0F0");
             return;
         }
         break;
@@ -206,7 +206,7 @@ void MainWindow::on_input2FormatSelector_currentIndexChanged(int index)
     case 2: //hex
         //run setHexValue, display error msg and return on fail
         if (not input2.setHexValue(ui->input2PlainTextEdit->toPlainText())) {
-            ui->input2ErrorDisplay->setText("TODO");
+            ui->input2ErrorDisplay->setText("Format: F0F0F0F0");
             return;
         }
         break;
