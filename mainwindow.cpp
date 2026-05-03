@@ -26,7 +26,7 @@ void MainWindow::on_input1SubmitButton_clicked() //run when submit button for in
     case 1: //binary
         //run setBinaryValue, display error msg and return on fail
         if (not input1.setBinaryValue(ui->input1PlainTextEdit->toPlainText())) {
-            ui->input1ErrorDisplay->setText("Formatting Error: expecting 32 bit binary");
+            ui->input1ErrorDisplay->setText("Error: expecting 32 bit binary");
             return;
         }
         break;
@@ -34,7 +34,7 @@ void MainWindow::on_input1SubmitButton_clicked() //run when submit button for in
     case 2: //decimal
         //run setDecimalValue, display error msg and return on fail
         if (not input1.setDecimalValue(ui->input1PlainTextEdit->toPlainText())) {
-            ui->input1ErrorDisplay->setText("Formatting Error: expecting decimal");
+            ui->input1ErrorDisplay->setText("Error: expecting decimal");
             return;
         }
         break;
@@ -42,7 +42,7 @@ void MainWindow::on_input1SubmitButton_clicked() //run when submit button for in
     case 3: //hex
         //run setHexValue, display error msg and return on fail
         if (not input1.setHexValue(ui->input1PlainTextEdit->toPlainText())) {
-            ui->input1ErrorDisplay->setText("Formatting Error: expecting 8 digit hex");
+            ui->input1ErrorDisplay->setText("Error: expecting 8 digit hex");
             return;
         }
         break;
@@ -50,7 +50,7 @@ void MainWindow::on_input1SubmitButton_clicked() //run when submit button for in
     case 4: //SEM
         //run setSEMValue, display error msg and return on fail
         if (not input1.setSEMValue(ui->input1PlainTextEdit->toPlainText())) {
-            ui->input1ErrorDisplay->setText("Formatting Error: expecting SEM");
+            ui->input1ErrorDisplay->setText("Error: expecting SEM");
             return;
         }
         break;
@@ -75,7 +75,7 @@ void MainWindow::on_input2SubmitButton_clicked()
     case 1: //binary
         //run setBinaryValue, display error msg and return on fail
         if (not input2.setBinaryValue(ui->input2PlainTextEdit->toPlainText())) {
-            ui->input2ErrorDisplay->setText("Formatting Error: expecting 32 bit binary");
+            ui->input2ErrorDisplay->setText("Error: expecting 32 bit binary");
             return;
         }
         break;
@@ -83,7 +83,7 @@ void MainWindow::on_input2SubmitButton_clicked()
     case 2: //decimal
         //run setDecimalValue, display error msg and return on fail
         if (not input2.setDecimalValue(ui->input2PlainTextEdit->toPlainText())) {
-            ui->input2ErrorDisplay->setText("Formatting Error: expecting decimal");
+            ui->input2ErrorDisplay->setText("Error: expecting decimal");
             return;
         }
         break;
@@ -91,7 +91,7 @@ void MainWindow::on_input2SubmitButton_clicked()
     case 3: //hex
         //run setHexValue, display error msg and return on fail
         if (not input2.setHexValue(ui->input2PlainTextEdit->toPlainText())) {
-            ui->input2ErrorDisplay->setText("Formatting Error: expecting 8 digit hex");
+            ui->input2ErrorDisplay->setText("Error: expecting 8 digit hex");
             return;
         }
         break;
@@ -99,7 +99,7 @@ void MainWindow::on_input2SubmitButton_clicked()
     case 4: //SEM
         //run setSEMValue, display error msg and return on fail
         if (not input2.setSEMValue(ui->input2PlainTextEdit->toPlainText())) {
-            ui->input2ErrorDisplay->setText("Formatting Error: expecting SEM");
+            ui->input2ErrorDisplay->setText("Error: expecting SEM");
             return;
         }
         break;

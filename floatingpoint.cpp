@@ -57,7 +57,7 @@ bool floatingPoint::setDecimalValue(QString input) {
     float integerpart = 0;
     float userfloat = 0;
     int tempint = 0;
-    int tempint2 =0;
+    uint32_t tempint2 =0;
     float testfloat = 0;
     int start = 0;
 
@@ -95,6 +95,10 @@ bool floatingPoint::setDecimalValue(QString input) {
         i++;
     }
     integerpart = (float)tempint;
+
+    if (integerpart > 2147483648.0 or integerpart < -2146483648.0) {
+        return false;
+    }
 
     //gets decimal part of float
     if((decimalcount == 1) && (userinput[decimalposition+1] != '\0')){
